@@ -23,7 +23,7 @@ def choose_move(state):
  def attack(mon,m):
   d=damage(mon,b,m); fast=stat(mon,'spe')>stat(b,'spe') or m[4]>0; incoming=threat(mon); own=mon['current_hp']; acc=m[3]/100
   ko=min(1,max(0,(d/hp-.85)/.23)) if hp else 1
-  return acc*(min(d,hp)/max(1,hp)*65+ko*(80 if fast else 30)) - (35 if incoming>=own and not (fast and ko>.85) else 0)
+  return acc*(min(d,hp)/max(1,hp)*65+ko*(80 if fast else 30)) - (65 if incoming>=own and not (fast and ko>.85) else 0)
  def matchup(mon):
   scores=[attack(mon,MOVES[m['identifier']]) for m in mon['moves'] if m['pp']>0 and m['identifier'] in MOVES]
   return max(scores or [-100])-45*min(2,threat(mon)/max(1,mon['current_hp']))
@@ -35,7 +35,7 @@ def choose_move(state):
    if n in ('swords-dance','nasty-plot','dragon-dance','calm-mind','bulk-up') and inc<a['current_hp']*.28 and max(a['stat_stages'].get('attack',0),a['stat_stages'].get('sp_atk',0))<4: v=100
    scores.append((v,x))
   elif x['action']=='switch':
-   mon=bench[x['index']]; v=matchup(mon) if forced else matchup(mon)-65
+   mon=bench[x['index']]; v=matchup(mon) if forced else matchup(mon)-65-65*min(1,threat(mon)/max(1,mon['current_hp']))
    scores.append((v,x))
   else: scores.append((-200,x))
  return max(scores,key=lambda x:x[0])[1]

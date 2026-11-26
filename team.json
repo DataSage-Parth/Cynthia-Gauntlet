@@ -2,21 +2,30 @@
   "team_name": "Gauntlet Challenger",
   "pokemon": [
     {
+      "species": "victreebel",
+      "moves": [
+        "leaf-blade",
+        "sludge-bomb",
+        "seed-bomb",
+        "energy-ball"
+      ]
+    },
+    {
+      "species": "kadabra",
+      "moves": [
+        "psychic",
+        "shadow-ball",
+        "energy-ball",
+        "signal-beam"
+      ]
+    },
+    {
       "species": "pichu",
       "moves": [
         "thunderbolt",
         "charge-beam",
         "headbutt",
         "iron-tail"
-      ]
-    },
-    {
-      "species": "garchomp",
-      "moves": [
-        "earthquake",
-        "dragon-claw",
-        "fire-fang",
-        "aerial-ace"
       ]
     },
     {
@@ -29,29 +38,20 @@
       ]
     },
     {
-      "species": "haunter",
-      "moves": [
-        "shadow-ball",
-        "thunderbolt",
-        "energy-ball",
-        "psychic"
-      ]
-    },
-    {
-      "species": "flygon",
-      "moves": [
-        "earthquake",
-        "dragon-claw",
-        "fire-punch",
-        "aerial-ace"
-      ]
-    },
-    {
       "species": "weavile",
       "moves": [
         "ice-punch",
         "night-slash",
         "brick-break",
+        "aerial-ace"
+      ]
+    },
+    {
+      "species": "garchomp",
+      "moves": [
+        "earthquake",
+        "dragon-claw",
+        "fire-fang",
         "aerial-ace"
       ]
     }

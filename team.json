@@ -1,0 +1,59 @@
+{
+  "team_name": "Gauntlet Challenger",
+  "pokemon": [
+    {
+      "species": "pichu",
+      "moves": [
+        "thunderbolt",
+        "charge-beam",
+        "headbutt",
+        "iron-tail"
+      ]
+    },
+    {
+      "species": "garchomp",
+      "moves": [
+        "earthquake",
+        "dragon-claw",
+        "fire-fang",
+        "aerial-ace"
+      ]
+    },
+    {
+      "species": "machop",
+      "moves": [
+        "brick-break",
+        "ice-punch",
+        "thunder-punch",
+        "cross-chop"
+      ]
+    },
+    {
+      "species": "haunter",
+      "moves": [
+        "shadow-ball",
+        "thunderbolt",
+        "energy-ball",
+        "psychic"
+      ]
+    },
+    {
+      "species": "flygon",
+      "moves": [
+        "earthquake",
+        "dragon-claw",
+        "fire-punch",
+        "aerial-ace"
+      ]
+    },
+    {
+      "species": "weavile",
+      "moves": [
+        "ice-punch",
+        "night-slash",
+        "brick-break",
+        "aerial-ace"
+      ]
+    }
+  ]
+}

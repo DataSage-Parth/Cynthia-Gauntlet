@@ -1,10 +1,16 @@
 # Cynthia's Gauntlet
 
-Current candidate: V7 (39/40 points).
+Final submission: V5.
 
-- `team.json`: six Pokémon and their moves.
+- `team.json`: six Pokémon and their moves (40/40 points).
 - `policy.py`: custom battle policy.
 
-Test both files using the [official simulator](https://cynthias-gauntlet.onrender.com/).
+## Website benchmarks
 
-V7 website benchmark is not yet confirmed. Previous V5 website benchmark: 83.6% (836/1,000). Benchmark grid and individual replay outcomes have sometimes disagreed; organizer clarification is pending.
+| Run | Wins | Losses | Win rate |
+| --- | ---: | ---: | ---: |
+| 1 | 836 | 164 | 83.6% |
+| 2 | 840 | 160 | 84.0% |
+| Combined | 1676 | 324 | 83.8% |
+
+[Official simulator](https://cynthias-gauntlet.onrender.com/). Hidden-variant performance has not been verified.

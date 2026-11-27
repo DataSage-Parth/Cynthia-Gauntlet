@@ -14,16 +14,21 @@ def damage(a,b,m):
  for u in b['types']: e*=TYPES.get(t,{}).get(u,1)
  return (22*p*stat(a,'atk' if c=='physical' else 'spa')/max(1,stat(b,'def' if c=='physical' else 'spd'))/50+2)*e*(1.5 if t in a['types'] else 1)*.925
 
+PRIOR = {'giratina-altered': ['aura-sphere', 'dragon-claw', 'shadow-force'], 'lucario': ['aura-sphere', 'extreme-speed'], 'garchomp': ['earthquake', 'dragon-claw', 'brick-break'], 'roserade': ['sludge-bomb', 'energy-ball'], 'milotic': ['surf', 'ice-beam', 'hydro-pump'], 'gastrodon': ['earthquake', 'surf', 'ice-beam']}
+
 def choose_move(state):
  legal=state['legal_actions']; a=state['active_pokemon']; b=dict(state['opponent_active']); b['stats']=STATS[b['species']]; hp=max(1,b['stats']['hp']*b['hp_percent']/100)
  def threat(mon):
-  known=[MOVES[n] for n in b['known_moves'] if n in MOVES]
+  known=[MOVES[n] for n in b['known_moves']+PRIOR.get(b['species'],[]) if n in MOVES]
   guesses=[(t,c,95,100,0) for t in b['types'] for c in ('physical','special')]
   coverage=[(t,c,85,100,0) for t in ('ice','ground','fighting','ghost','electric','grass','fire','water','dragon','psychic','dark') for c in ('physical','special')]
   return max([damage(b,mon,m) for m in known]+[damage(b,mon,m)*.9 for m in guesses]+[damage(b,mon,m)*.48 for m in coverage]+[1])
  def value(mon, m, entry):
   inc=threat(mon); own=mon['current_hp']-entry; d=damage(mon,b,m); acc=m[3]/100; fast=stat(mon,'spe')>stat(b,'spe') or m[4]>0
   if own<=0: return -200
+  for n in b['known_moves']+PRIOR.get(b['species'],[]):
+   em=MOVES.get(n)
+   if em and em[4]>m[4] and damage(b,mon,em)*1.08>=own: fast=False
   ko=max(0,min(1,(d/hp-.91)/.17))*acc
   hits=max(1,int((hp+d*.95-0.0001)/max(1,d*.95)))
   taken=inc*max(0,hits-int(fast)); survival=max(0,min(1,(own-taken)/max(1,inc)+.5))

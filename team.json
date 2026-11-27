@@ -1,5 +1,5 @@
 {
-  "team_name": "Gauntlet V4",
+  "team_name": "Gauntlet V7",
   "pokemon": [
     {
       "species": "slaking",
@@ -29,12 +29,12 @@
       ]
     },
     {
-      "species": "diglett",
+      "species": "marshtomp",
       "moves": [
         "earthquake",
         "earth-power",
-        "aerial-ace",
-        "shadow-claw"
+        "ice-beam",
+        "surf"
       ]
     },
     {
@@ -47,12 +47,12 @@
       ]
     },
     {
-      "species": "houndour",
+      "species": "ralts",
       "moves": [
-        "fire-blast",
-        "flamethrower",
-        "dark-pulse",
-        "crunch"
+        "psychic",
+        "shadow-ball",
+        "thunderbolt",
+        "ice-punch"
       ]
     }
   ]

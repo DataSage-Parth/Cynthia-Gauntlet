@@ -1,59 +1,56 @@
-{
-  "team_name": "Gauntlet V4",
-  "pokemon": [
-    {
-      "species": "slaking",
-      "moves": [
-        "earthquake",
-        "ice-punch",
-        "thunder-punch",
-        "shadow-claw"
-      ]
-    },
-    {
-      "species": "weavile",
-      "moves": [
-        "ice-punch",
-        "brick-break",
-        "night-slash",
-        "ice-beam"
-      ]
-    },
-    {
-      "species": "ludicolo",
-      "moves": [
-        "energy-ball",
-        "ice-beam",
-        "giga-drain",
-        "seed-bomb"
-      ]
-    },
-    {
-      "species": "gastly",
-      "moves": [
-        "shadow-ball",
-        "thunderbolt",
-        "energy-ball",
-        "psychic"
-      ]
-    },
-    {
-      "species": "swinub",
-      "moves": [
-        "ice-shard",
-        "earthquake",
-        "blizzard",
-        "ice-beam"
-      ]
-    },
-    {
-      "species": "houndour",
-      "moves": [
-        "fire-blast",
-        "flamethrower",
-        "dark-pulse",
-        "crunch"
-      ]
-    }
-  ]
-}
+[
+  {
+    "species": "slaking",
+    "moves": [
+      "earthquake",
+      "ice-punch",
+      "thunder-punch",
+      "shadow-claw"
+    ]
+  },
+  {
+    "species": "weavile",
+    "moves": [
+      "ice-punch",
+      "brick-break",
+      "night-slash",
+      "ice-beam"
+    ]
+  },
+  {
+    "species": "ludicolo",
+    "moves": [
+      "energy-ball",
+      "ice-beam",
+      "giga-drain",
+      "seed-bomb"
+    ]
+  },
+  {
+    "species": "marshtomp",
+    "moves": [
+      "earthquake",
+      "earth-power",
+      "ice-beam",
+      "surf"
+    ]
+  },
+  {
+    "species": "swinub",
+    "moves": [
+      "ice-shard",
+      "earthquake",
+      "blizzard",
+      "ice-beam"
+    ]
+  },
+  {
+    "species": "ralts",
+    "moves": [
+      "psychic",
+      "shadow-ball",
+      "thunderbolt",
+      "ice-punch"
+    ]
+  }
+]

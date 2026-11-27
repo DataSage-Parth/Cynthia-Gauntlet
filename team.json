@@ -2,57 +2,57 @@
   "team_name": "Gauntlet Challenger",
   "pokemon": [
     {
-      "species": "victreebel",
+      "species": "slaking",
       "moves": [
-        "leaf-blade",
-        "sludge-bomb",
-        "seed-bomb",
-        "energy-ball"
-      ]
-    },
-    {
-      "species": "kadabra",
-      "moves": [
-        "psychic",
-        "shadow-ball",
-        "energy-ball",
-        "signal-beam"
-      ]
-    },
-    {
-      "species": "pichu",
-      "moves": [
-        "thunderbolt",
-        "charge-beam",
-        "headbutt",
-        "iron-tail"
-      ]
-    },
-    {
-      "species": "machop",
-      "moves": [
-        "brick-break",
+        "earthquake",
         "ice-punch",
         "thunder-punch",
-        "cross-chop"
+        "shadow-claw"
       ]
     },
     {
       "species": "weavile",
       "moves": [
         "ice-punch",
-        "night-slash",
         "brick-break",
-        "aerial-ace"
+        "night-slash",
+        "ice-beam"
       ]
     },
     {
-      "species": "garchomp",
+      "species": "ludicolo",
+      "moves": [
+        "energy-ball",
+        "ice-beam",
+        "giga-drain",
+        "seed-bomb"
+      ]
+    },
+    {
+      "species": "diglett",
       "moves": [
         "earthquake",
-        "dragon-claw",
-        "fire-fang",
-        "aerial-ace"
+        "earth-power",
+        "aerial-ace",
+        "shadow-claw"
+      ]
+    },
+    {
+      "species": "swinub",
+      "moves": [
+        "ice-shard",
+        "earthquake",
+        "blizzard",
+        "ice-beam"
+      ]
+    },
+    {
+      "species": "houndour",
+      "moves": [
+        "fire-blast",
+        "flamethrower",
+        "dark-pulse",
+        "crunch"
       ]
     }
   ]

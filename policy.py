@@ -15,27 +15,27 @@ def damage(a,b,m):
  return (22*p*stat(a,'atk' if c=='physical' else 'spa')/max(1,stat(b,'def' if c=='physical' else 'spd'))/50+2)*e*(1.5 if t in a['types'] else 1)*.925
 
 def choose_move(state):
- legal=state['legal_actions']; a=state['active_pokemon']; b=dict(state['opponent_active']); b['stats']=STATS.get(b['species'],{'hp':160,'atk':110,'def':110,'spa':110,'spd':110,'spe':100}); hp=b['stats']['hp']*b['hp_percent']/100
+ legal=state['legal_actions']; a=state['active_pokemon']; b=dict(state['opponent_active']); b['stats']=STATS[b['species']]; hp=max(1,b['stats']['hp']*b['hp_percent']/100)
  def threat(mon):
   known=[MOVES[n] for n in b['known_moves'] if n in MOVES]
-  guesses=[(t,c,85,100,0) for t in b['types'] for c in ('physical','special')]
-  return max([damage(b,mon,m) for m in known]+[damage(b,mon,m)*.85 for m in guesses]+[1])
- def attack(mon,m):
-  d=damage(mon,b,m); fast=stat(mon,'spe')>stat(b,'spe') or m[4]>0; incoming=threat(mon); own=mon['current_hp']; acc=m[3]/100
-  ko=min(1,max(0,(d/hp-.85)/.23)) if hp else 1
-  return acc*(min(d,hp)/max(1,hp)*65+ko*(80 if fast else 30)) - (65 if incoming>=own and not (fast and ko>.85) else 0)
- def matchup(mon):
-  scores=[attack(mon,MOVES[m['identifier']]) for m in mon['moves'] if m['pp']>0 and m['identifier'] in MOVES]
-  return max(scores or [-100])-45*min(2,threat(mon)/max(1,mon['current_hp']))
- scores=[]; bench={m['index']:m for m in state['bench']}; forced=not any(x['action']=='move' for x in legal)
+  guesses=[(t,c,95,100,0) for t in b['types'] for c in ('physical','special')]
+  coverage=[(t,c,85,100,0) for t in ('ice','ground','fighting','ghost','electric','grass','fire','water','dragon','psychic','dark') for c in ('physical','special')]
+  return max([damage(b,mon,m) for m in known]+[damage(b,mon,m)*.9 for m in guesses]+[damage(b,mon,m)*.48 for m in coverage]+[1])
+ def value(mon, m, entry):
+  inc=threat(mon); own=mon['current_hp']-entry; d=damage(mon,b,m); acc=m[3]/100; fast=stat(mon,'spe')>stat(b,'spe') or m[4]>0
+  if own<=0: return -200
+  ko=max(0,min(1,(d/hp-.91)/.17))*acc
+  hits=max(1,int((hp+d*.95-0.0001)/max(1,d*.95)))
+  taken=inc*max(0,hits-int(fast)); survival=max(0,min(1,(own-taken)/max(1,inc)+.5))
+  dealt=min(1,d/hp)*acc
+  return 65*dealt+65*ko*(1 if fast else .5)+55*survival-55*min(1,(entry+min(own,taken))/mon['max_hp'])- (45 if not fast and inc>=own else 0)
+ def best(mon,entry):
+  return max([value(mon,MOVES[m['identifier']],entry) for m in mon['moves'] if m['pp']>0 and m['identifier'] in MOVES] or [-200])
+ bench={m['index']:m for m in state['bench']}; forced=not any(x['action']=='move' for x in legal); scores=[]
  for x in legal:
-  if x['action']=='move':
-   m=a['moves'][x['index']]; n=m['identifier']; v=attack(a,MOVES[n]); inc=threat(a)
-   if n in ('recover','roost','soft-boiled','slack-off','milk-drink','heal-order') and a['current_hp']<a['max_hp']*.55 and inc<a['max_hp']*.35: v=80
-   if n in ('swords-dance','nasty-plot','dragon-dance','calm-mind','bulk-up') and inc<a['current_hp']*.28 and max(a['stat_stages'].get('attack',0),a['stat_stages'].get('sp_atk',0))<4: v=100
-   scores.append((v,x))
+  if x['action']=='move': v=value(a,MOVES[a['moves'][x['index']]['identifier']],0)
   elif x['action']=='switch':
-   mon=bench[x['index']]; v=matchup(mon) if forced else matchup(mon)-65-65*min(1,threat(mon)/max(1,mon['current_hp']))
-   scores.append((v,x))
-  else: scores.append((-200,x))
- return max(scores,key=lambda x:x[0])[1]
+   mon=bench[x['index']]; v=best(mon,0 if forced else threat(mon))- (0 if forced else 23)
+  else: v=-200
+  scores.append((v,x))
+ return max(scores,key=lambda z:z[0])[1]

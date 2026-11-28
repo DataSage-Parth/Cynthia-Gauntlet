@@ -1,16 +1,21 @@
-# Cynthia's Gauntlet
+# DATA CULT
 
-Final submission: V5.
+Cynthia's Gauntlet — final submission (V12).
 
-- `team.json`: six Pokémon and their moves (40/40 points).
-- `policy.py`: custom battle policy.
+## Files
 
-## Website benchmarks
+- `team.json` — six Pokémon and their legal moves (40/40 points).
+- `policy.py` — custom battle policy.
 
-| Run | Wins | Losses | Win rate |
-| --- | ---: | ---: | ---: |
-| 1 | 836 | 164 | 83.6% |
-| 2 | 840 | 160 | 84.0% |
-| Combined | 1676 | 324 | 83.8% |
+## Website practice benchmarks
 
-[Official simulator](https://cynthias-gauntlet.onrender.com/). Hidden-variant performance has not been verified.
+| Configuration | Battles | Wins | Losses | Win rate |
+| --- | ---: | ---: | ---: | ---: |
+| Custom policy, run 1 | 1,000 | 985 | 15 | 98.5% |
+| Custom policy, run 2 | 1,000 | 987 | 13 | 98.7% |
+| **Custom policy, combined** | **2,000** | **1,972** | **28** | **98.6%** |
+| Organizer's default policy | 250 | 139 | 111 | 55.6% |
+
+The two modes may use different opponent lineups and seeds, so this is not a controlled comparison of policy strength. Hidden-variant tournament results are unverified.
+
+[Official simulator](https://cynthias-gauntlet.onrender.com/)
